@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!-- 构造函数注入形式的循环依赖-->
+    <bean id="userA" class="com.senlin.spring.cycle.UserA">
+        <constructor-arg index="0" ref="userB"></constructor-arg>
+    </bean>
+
+    <bean id="userB" class="com.senlin.spring.cycle.UserB">
+        <constructor-arg index="0" ref="userA"></constructor-arg>
+    </bean>
+
+
+    <bean id="userAa" class="com.senlin.spring.cycle.UserAa">
+        <property name="userBb" ref="userBb"></property>
+    </bean>
+
+    <bean id="userBb" class="com.senlin.spring.cycle.UserBb">
+        <property name="userAa" ref="userAa"></property>
+    </bean>
+
+</beans>

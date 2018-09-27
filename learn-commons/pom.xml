@@ -9,13 +9,6 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>learn-pattern</artifactId>
-    <packaging>pom</packaging>
-    <modules>
-        <module>decorator</module>
-        <module>singleton</module>
-        <module>singleton</module>
-        <module>factory</module>
-        <module>proxy</module>
-    </modules>
+    <artifactId>learn-commons</artifactId>
+    
 </project>

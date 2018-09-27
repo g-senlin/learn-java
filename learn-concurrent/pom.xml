@@ -9,13 +9,17 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>learn-pattern</artifactId>
+    <artifactId>learn-concurrent</artifactId>
     <packaging>pom</packaging>
     <modules>
-        <module>decorator</module>
-        <module>singleton</module>
-        <module>singleton</module>
-        <module>factory</module>
-        <module>proxy</module>
+        <module>jvm</module>
     </modules>
+
+    <dependencies>
+        <dependency>
+            <groupId>com.senlin</groupId>
+            <artifactId>learn-commons</artifactId>
+        </dependency>
+    </dependencies>
+
 </project>
