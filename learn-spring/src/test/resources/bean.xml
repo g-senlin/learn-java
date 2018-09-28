@@ -4,5 +4,6 @@
        xsi:schemaLocation="http://www.springframework.org/schema/beans
         http://www.springframework.org/schema/beans/spring-beans.xsd">
 
-    <bean id="sayHello" class="com.senlin.spring.HelloSpring"></bean>
+    <bean id="sayHello" class="com.senlin.spring.bean.HelloSpring"></bean>
+    <bean class="com.senlin.spring.bean.postprocessor.InstantiationTracingBeanPostProcessor" />
 </beans>

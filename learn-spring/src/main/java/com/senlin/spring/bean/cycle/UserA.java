@@ -1,4 +1,4 @@
-package com.senlin.spring.cycle;
+package com.senlin.spring.bean.cycle;
 
 /**
  *  通构造方法注入的循环依赖

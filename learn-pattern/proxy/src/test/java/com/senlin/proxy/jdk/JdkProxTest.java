@@ -1,7 +1,11 @@
 package com.senlin.proxy.jdk;
 
-import com.senlin.proxy.cglib.Lisi;
+import com.google.common.io.Files;
 import org.junit.Test;
+import sun.misc.ProxyGenerator;
+
+import java.io.File;
+import java.io.IOException;
 
 /**
  * @author gsl
@@ -9,8 +13,23 @@ import org.junit.Test;
  */
 public class JdkProxTest {
 
+
     @Test
     public void testJdkProxy() {
-        new ProxyPerson<IPerson>(new Zhangsan()).getProxyInstance().say();
+        IPerson proxy = new ProxyPerson<IPerson>(new Zhangsan()).getProxyInstance();
+        proxy.say();
+    }
+
+    @Test
+    public void testJdkProxyGenerateProxyClass() {
+        IPerson proxy = new ProxyPerson<IPerson>(new Zhangsan()).getProxyInstance();
+        byte[] proxyClass = ProxyGenerator.generateProxyClass(proxy.getClass().getSimpleName(),
+                new Class[]{proxy.getClass()});
+        try {
+            Files.write(proxyClass,new File(proxy.getClass().getName() + ".class"));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        proxy.say();
     }
 }

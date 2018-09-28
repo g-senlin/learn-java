@@ -1,4 +1,4 @@
-package com.senlin.spring;
+package com.senlin.spring.bean;
 
 /**
  * @author gsl

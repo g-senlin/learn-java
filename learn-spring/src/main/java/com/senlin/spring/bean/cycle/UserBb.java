@@ -1,4 +1,4 @@
-package com.senlin.spring.cycle;
+package com.senlin.spring.bean.cycle;
 
 import lombok.Setter;
 
