@@ -41,6 +41,7 @@
         <module>learn-concurrent</module>
         <module>learn-commons</module>
         <module>learn-spring</module>
+        <module>learn-net</module>
     </modules>
 
     <dependencyManagement>
