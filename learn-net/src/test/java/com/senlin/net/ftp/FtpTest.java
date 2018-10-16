@@ -13,21 +13,54 @@ public class FtpTest {
 
     @Test
     public void upload() throws IOException {
-        InputStream in = new FileInputStream("C:\\Users\\gsl\\Desktop\\frontend-notebook.pdf");
-        Ftp.upload("127.0.0.1", 2121, "gsl", "*****", in, "/gsl", "xxx.pdf", "utf-8");
-        in.close();
+        try (InputStream in = new FileInputStream("C:\\Users\\gsl\\Desktop\\frontend-notebook.pdf")) {
+            Ftp.upload("127.0.0.1", 2121, "gsl", "123456", in, "/gsl", "xxx.pdf", "utf-8");
+        }
     }
 
-//
-//    @Test
-//    public void download() throws IOException {
-//
-//        InputStream in = Ftp.download("127.0.0.1", 2121, "gsl", "xx", "/", "xxx.pdf", "utf-8");
-//        FileOutputStream out = new FileOutputStream("C:\\Users\\gsl\\Desktop\\xxxxxxxxx.pdf");
-//        ByteStreams.copy(in,out);
-//        in.close();
-//        out.close();
-//    }
+
+    @Test
+    public void download() throws IOException {
+        InputStream in = null;
+        OutputStream out = null;
+        try {
+            in = Ftp.download("127.0.0.1", 2121, "gsl", "123456", "/gsl", "xxx.pdf", "utf-8");
+            out = new FileOutputStream("C:\\Users\\gsl\\Desktop\\xxxxxxxxx.pdf");
+            ByteStreams.copy(in, out);
+        } finally {
+            if (in != null) {
+                in.close();
+            }
+            if (out != null) {
+                out.close();
+            }
+        }
+    }
 
 
+    @Test
+    public void uploadPassiveMode() throws IOException {
+        try (InputStream in = new FileInputStream("C:\\Users\\gsl\\Desktop\\frontend-notebook.pdf")) {
+            Ftp.uploadPassiveMode("127.0.0.1", 2121, "gsl", "123456", in, "/gsl/passive", "xxx.pdf", "utf-8");
+        }
+    }
+
+    @Test
+    public void downloadPassiveMode() throws IOException {
+
+        InputStream in = null;
+        OutputStream out = null;
+        try {
+            in = Ftp.downloadPassiveMode("127.0.0.1", 2121, "gsl", "123456", "/gsl", "xxx.pdf", "utf-8");
+            out = new FileOutputStream("C:\\Users\\gsl\\Desktop\\xxxxxxxxx.pdf");
+            ByteStreams.copy(in, out);
+        } finally {
+            if (in != null) {
+                in.close();
+            }
+            if (out != null) {
+                out.close();
+            }
+        }
+    }
 }
